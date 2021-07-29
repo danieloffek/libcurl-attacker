@@ -26,3 +26,7 @@ void runCurl(char *location) {
     }
   }
 }
+
+void main(int argc, char *argv[]){
+  runCurl(argv[1]);
+}
