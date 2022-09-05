@@ -1,4 +1,5 @@
 import pycurl
+from multiprocessing import Process
 from threading import Thread
 import sys
 
@@ -19,5 +20,12 @@ def run_curl():
     while(True):
         c.perform()
 
-for _ in range(10):
-    Thread(target=run_curl).start()
+def run_curl_threads():
+    for _ in range(4):
+        Thread(target=run_curl).start()
+
+def main():
+    for _ in range(4):
+        Process(target=run_curl_threads).start()
+
+main()
